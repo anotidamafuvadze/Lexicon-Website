@@ -1,0 +1,50 @@
+
+.instructions-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-top: -50px;
+  text-align: center;
+}
+
+.game-description {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Press Start 2P', monospace;
+  color: #3b3a37;
+  text-align: center;
+  position: relative;
+  justify-content: 'center';
+  align-items: center;
+}
+
+.game-description p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+
+.instructions-button {
+  padding: 15px 40px;
+  font-size: 2.5rem;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  border-style: solid;
+  border-width: 4px;
+  border-radius: 40px;
+  box-shadow: 0 8px 0px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: rgb(51, 50, 46);
+  text-align: center;
+  position: relative;
+  margin-top: 5px;
+}
+
+.instructions-button:hover {
+  background-color: #fbfbfb;
+}

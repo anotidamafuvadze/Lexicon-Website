@@ -1,0 +1,15 @@
+✅ Core Gameplay Fixes
+1. TODO: Put tiles in correct place on board
+2. TODO: Display new tiles immediately after a move (not on refresh) (test difficulty button when fixed)
+3. TODO: Animate tile growth when held to pop
+4. TODO: Change tile border style when locked with double tap
+5. TODO: Confirm winning and losing splash screens trigger correctly
+6. TODO: Add some sort of screen shot sharing mechanism
+
+🛠 UI & Code Cleanup
+7. TODO: Fix white line bug on the New Game button
+8. TODO: Convert index.js and other JavaScript files to TypeScript (.tsx)
+9. TODO: Resolve issue where the target word is sometimes undefined
+
+📱 Mobile Functionality
+10. TODO: Test MobileSwiper on an actual mobile device to ensure proper swipe detection

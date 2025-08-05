@@ -1,0 +1,35 @@
+/* === Win and Lose Overlays === */
+.splash-win,
+.splash-lost {
+  position: absolute;
+  top: 246px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 380px;
+  height: 380px;
+  border-radius: 13px;
+  align-self: center;
+}
+
+/* Light transparent overlay for win */
+.splash-win {
+  background-color: rgba(197, 188, 147, 0.05);
+}
+
+/* Dark transparent overlay for loss */
+.splash-lost {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* === Splash Text === */
+.splash-text {
+  font-size: 48px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: rgba(240, 240, 240, 1);
+  text-shadow: 1px 1px 0 black;
+  user-select: none;
+}

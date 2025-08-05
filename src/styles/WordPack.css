@@ -1,0 +1,85 @@
+
+.word-pack-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.word-pack-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.5rem; /* menuButton font size */
+  font-weight: 900;
+  color: rgba(53, 52, 48, 1);
+  line-height: 93%;
+  margin-top: 15px;
+}
+
+.word-pack-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem; /* menuButton font size */
+  font-weight: 500;
+  width: 450px;
+  margin-top: -20px;
+}
+
+.word-pack-button-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -20px;
+}
+
+
+.word-pack-button {
+  display: flex;
+  align-items: center;
+  padding: 3px 45px;
+  gap: 16px;
+  border-radius: 40px;
+  border: 3px solid rgb(66, 65, 61);
+  background-color: rgba(247, 244, 239, 1);
+  box-shadow: 0px 9px 0px rgba(147, 138, 117, 0.6);
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(68, 66, 61);
+  text-align: left;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1.5s ease-in-out;;
+  margin-top: 25px;
+  
+}
+
+.word-pack-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.word-pack-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -20px;
+}
+
+.word-pack-name {
+  font-size: 1.9rem;
+  font-weight: 900;
+}
+
+.word-pack-description {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.word-pack-button:hover {
+  background-color: #fffbf7;
+}
+
+.word-pack-icon {
+  width: 75px; /* RESUME_ICON_SIZE */
+  height: 75px;
+  margin-right: 12px; /* MENU_ICON_MARGIN_RIGHT */
+  margin-left: -15px;
+}
