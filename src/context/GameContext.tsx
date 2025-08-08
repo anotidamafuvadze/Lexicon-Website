@@ -111,7 +111,6 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
 
   // ===== Reset board with two tiles =====
   const startNewGame = () => {
-    console.log("Starting a new game!");
     lockedTile.current = "";
     isAbleToLock.current = true;
     dispatch({ type: "RESET_GAME" });
@@ -253,6 +252,7 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
       game.MERGE_ANIMATION_DURATION * 1.05,
       { trailing: false }
     ),
+    
     [dispatch, gameState.status]
   );
 

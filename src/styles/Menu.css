@@ -1,11 +1,19 @@
-
+/* ================== Menu Layout ================== */
 .menu-button-group {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 85px; /* corresponds to MENU_BUTTON_MARGIN_TOP */
+  margin-top: 85px;
 }
 
+.menu-text-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================== Sound Button ================== */
 .sound-button {
   background: none;
   border: none;
@@ -13,20 +21,20 @@
   font-size: 3.5rem;
   font-weight: 900;
   color: rgb(59, 58, 55);
-
 }
 
+/* ================== Menu Screen Buttons ================== */
 .menu-screen-button {
-  padding: 16px 32px; /* MENU_BUTTON_PADDING_VERTICAL and HORIZONTAL */
-  border-radius: 40px; /* MENU_BUTTON_BORDER_RADIUS */
-  border: 3px solid #2a2621; /* MENU_BUTTON_BORDER */
-  background-color: rgba(247, 244, 239, 1); /* MENU_SCREEN_BUTTON_BG */
-  box-shadow: 0px 9px 0px rgba(147, 138, 117, 0.6); /* shadow properties */
+  padding: 16px 32px;
+  border-radius: 40px;
+  border: 3px solid #2a2621;
+  background-color: rgba(247, 244, 239, 1);
+  box-shadow: 0px 9px 0px rgba(147, 138, 117, 0.6);
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.3rem; /* menuButton font size */
+  font-size: 2.3rem;
   font-weight: 900;
-  color: rgb(59, 58, 55); /* MENU_BUTTON_TITLE */
-  letter-spacing: 1px; /* LETTER_SPACING_SMALL */
+  color: rgb(59, 58, 55);
+  letter-spacing: 1px;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -42,24 +50,18 @@
   background-color: #fffdfa;
 }
 
-.social-media-button-group{
+/* ================== Social Media Buttons ================== */
+.social-media-button-group {
   margin-top: 40px;
-
 }
-.social-media-button{
+
+.social-media-button {
   background-color: transparent;
   border: none;
   padding: 30px;
 }
-.social-media-button-icon{
+
+.social-media-button-icon {
   width: 80px;
   height: 80px;
-}
-
-
-.menu-text-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }

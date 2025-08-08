@@ -12,28 +12,28 @@ type MobileSwiperProps = PropsWithChildren<{
   onSwipe: (_: SwipeInput) => void;
 }>;
 
-export default function MobileSwiper({ children, onSwipe }: MobileSwiperProps) {
+/**
+ * MobileSwiper
+ * - Captures touch gestures within its wrapper and reports deltas via onSwipe
+ */
+export default function MobileSwiper({
+  children,
+  onSwipe,
+}: MobileSwiperProps): React.JSX.Element {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [startX, setStartX] = useState(0);
   const [startY, setStartY] = useState(0);
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
-    if (!wrapperRef.current?.contains(e.target as Node)) {
-      return;
-    }
-
+    if (!wrapperRef.current?.contains(e.target as Node)) return;
     e.preventDefault();
-
     setStartX(e.touches[0].clientX);
     setStartY(e.touches[0].clientY);
   }, []);
 
   const handleTouchEnd = useCallback(
     (e: TouchEvent) => {
-      if (!wrapperRef.current?.contains(e.target as Node)) {
-        return;
-      }
-
+      if (!wrapperRef.current?.contains(e.target as Node)) return;
       e.preventDefault();
 
       const endX = e.changedTouches[0].clientX;
@@ -46,13 +46,12 @@ export default function MobileSwiper({ children, onSwipe }: MobileSwiperProps) {
       setStartX(0);
       setStartY(0);
     },
-    [startX, startY, onSwipe],
+    [startX, startY, onSwipe]
   );
 
   useEffect(() => {
     window.addEventListener("touchstart", handleTouchStart, { passive: false });
     window.addEventListener("touchend", handleTouchEnd, { passive: false });
-
     return () => {
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchend", handleTouchEnd);

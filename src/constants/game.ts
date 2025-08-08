@@ -1,3 +1,14 @@
+// ======================= TILE POSITIONING =======================
+/**
+ * Converts a tile's grid position to pixel coordinates for rendering.
+ */
+export const getTilePixelPosition = (gridPosition: number, isColumn: boolean): number => {
+  const TILE_SIZE_PX = 97;
+  const TILE_INSET_PX = isColumn ? 12 : 10;
+  return gridPosition * TILE_SIZE_PX + TILE_INSET_PX;
+};
+
+
 // ======================= MERGE POINTS =======================
 const POINTS_FROM_MERGE: Record<string, number> = {
   A: 5, B: 10, C: 20, D: 30, E: 40, F: 50, G: 60, H: 70, I: 80, J: 90,
@@ -20,16 +31,9 @@ const game = {
   MOVE_ANIMATION_DURATION: 130,
   MERGE_ANIMATION_DURATION: 150,
   POP_ANIMATION_DURATION: 1800,
-  SPLASH_TIMEOUT: 1200,
+  SPLASH_TIMEOUT: 500,
   SPLASH_DURATION: 500,
   SHARE_TIMEOUT: 5250,
-
-  // Confetti
-  CONFETTI_COUNT: 100,
-  CONFETTI_COLORS,
-  CONFETTI_FALL_SPEED: 3000,
-  CONFETTI_EXPLOSION_SPEED: 5,
-  CONFETTI_ORIGIN: { x: 0, y: 800 },
 
   // Scoring & pops
   POINTS_FROM_MERGE,

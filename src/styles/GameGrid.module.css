@@ -1,7 +1,9 @@
+/* ================== Root Variables ================== */
 :root {
   --pixel-size: 7.5px;
 }
 
+/* ================== Board Layout ================== */
 .board {
   position: relative;
   width: calc(var(--pixel-size) * 9.5 * 4 + var(--pixel-size) * 4);
@@ -13,6 +15,7 @@
   padding: calc(var(--pixel-size) * 0.32) calc(var(--pixel-size) * 0.16);
 }
 
+/* ================== Grid & Cells ================== */
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +26,6 @@
 }
 
 .cell {
-  /* SLIGHTLY SMALLER */
   width: calc(var(--pixel-size) * 10.2);
   height: calc(var(--pixel-size) * 10.2);
   margin: calc(var(--pixel-size) * 0.26);
@@ -32,6 +34,7 @@
   box-shadow: inset 0 0 0 4px black;
 }
 
+/* ================== Tiles Layer ================== */
 .tiles {
   position: absolute;
   z-index: 2;
@@ -42,6 +45,7 @@
   margin: calc(var(--pixel-size) * 0.32) calc(var(--pixel-size) * 0.16);
 }
 
+/* ================== Responsive (≥512px) ================== */
 @media (min-width: 512px) {
   .board {
     width: calc(var(--pixel-size) * 11.8 * 4 + var(--pixel-size) * 7);
@@ -50,7 +54,6 @@
   }
 
   .cell {
-    /* SLIGHTLY SMALLER */
     width: calc(var(--pixel-size) * 12.2);
     height: calc(var(--pixel-size) * 12.2);
     margin: calc(var(--pixel-size) * 0.35);

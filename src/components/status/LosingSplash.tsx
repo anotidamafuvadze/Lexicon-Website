@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
-import "../../styles/Splash.css"; // assumes .splash-lost and .splash-text are defined
+import "../../styles/Splash.css";
 import game from "../../constants/game";
 
 /**
  * LosingSplash
  * - Displays a "You Lost" overlay with fade-in effect
  */
-function LosingSplash({ heading = "You Lost" }: { heading?: string }) {
+function LosingSplash({
+  heading = "You Lost",
+}: {
+  heading?: string;
+}): React.JSX.Element | null {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

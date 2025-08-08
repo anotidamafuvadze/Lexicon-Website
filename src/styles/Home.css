@@ -1,3 +1,4 @@
+/* ================== App Layout ================== */
 .App {
   text-align: center;
   min-height: 100vh;
@@ -9,6 +10,7 @@
   padding-top: 40px;
   color: rgb(46, 46, 43);
 }
+
 .App-header {
   width: 100%;
   display: flex;
@@ -20,7 +22,7 @@
   position: relative;
   top: -40px;
   font-size: 4.3rem;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 900;
   margin: 0;
 }
@@ -30,10 +32,11 @@
   top: -45px;
   margin-top: 0;
   font-size: 1.5rem;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
 }
 
+/* ================== Game Area ================== */
 .game-area {
   position: relative;
   display: flex;
@@ -44,6 +47,7 @@
   width: 100%;
 }
 
+/* ================== Target Word ================== */
 .target-word-container {
   position: relative;
   display: flex;
@@ -58,28 +62,23 @@
   text-shadow: none !important;
 }
 
-.target-word-title{
-  font-family: 'Montserrat';
+.target-word-title {
+  font-family: "Montserrat";
   color: white;
   text-shadow: 1px 1.5px 0px black;
-
-}
-.target-word {
-  font-family: 'Montserrat';
-  color: white;
-  text-shadow: 1px 3px 0px black;
-}
-
-.target-word-title {
   font-size: 1.7rem;
   margin-bottom: -5px;
 }
 
 .target-word {
+  font-family: "Montserrat";
+  color: white;
+  text-shadow: 1px 3px 0px black;
   font-size: 4.4rem;
   font-weight: bold;
 }
 
+/* ================== Button Group ================== */
 .button-group {
   display: flex;
   justify-content: space-between;
@@ -94,7 +93,7 @@
   justify-content: center;
   padding: 12px 20px;
   font-size: 1.6rem;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 900;
   border-style: solid;
   border-radius: 27px;
@@ -102,14 +101,14 @@
   cursor: pointer;
   transition: background-color 0.3s;
   text-align: center;
-  color:rgb(51, 50, 46);
-
+  color: rgb(51, 50, 46);
 }
 
 .button-group button:hover {
   background-color: #f0f0f0;
 }
 
+/* ================== Button Variants ================== */
 .new-game-button {
   background-color: rgba(224, 224, 224, 1);
 }

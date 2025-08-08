@@ -1,21 +1,22 @@
+/* ================== Difficulty Screen Styles ================== */
 
 .difficulty-button-group {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px; /* corresponds to MENU_BUTTON_MARGIN_TOP */
+  margin-top: 100px;
 }
 
 .difficulty-button {
-  padding: 0px 60px; /* MENU_BUTTON_PADDING_VERTICAL and HORIZONTAL */
-  border-radius: 65px; /* MENU_BUTTON_BORDER_RADIUS */
-  border: 6px solid rgb(37, 34, 30); /* MENU_BUTTON_BORDER */
-  box-shadow: 0px 9px 0px rgb(117, 109, 95); /* shadow properties */
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.3rem; /* menuButton font size */
+  padding: 0px 60px;
+  border-radius: 65px;
+  border: 6px solid rgb(37, 34, 30);
+  box-shadow: 0px 9px 0px rgb(117, 109, 95);
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.3rem;
   font-weight: 900;
-  color: rgb(255, 255, 255); /* MENU_BUTTON_TITLE */
-  letter-spacing: 1px; /* LETTER_SPACING_SMALL */
+  color: rgb(255, 255, 255);
+  letter-spacing: 1px;
   text-align: center;
   text-shadow: 2px 2px 0px #000000;
   cursor: pointer;
@@ -23,6 +24,7 @@
   margin-top: 40px;
 }
 
+/* ====== Difficulty Variants ====== */
 .easy-button {
   background-color: rgba(137, 166, 137, 1);
 }
@@ -35,6 +37,7 @@
   background-color: rgba(157, 85, 78, 1);
 }
 
+/* ====== Hover States ====== */
 .easy-button:hover {
   background-color: rgb(165, 195, 165);
 }
@@ -47,6 +50,7 @@
   background-color: rgb(171, 97, 91);
 }
 
+/* ====== Layout ====== */
 .difficulty-text-column {
   display: flex;
   flex-direction: column;
@@ -54,9 +58,8 @@
   align-items: center;
 }
 
+/* ====== Label Image ====== */
 .difficulty-label {
-  width: 220px; /* RESUME_ICON_SIZE */
+  width: 220px;
   height: 120px;
 }
-
-

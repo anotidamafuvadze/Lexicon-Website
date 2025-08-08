@@ -47,16 +47,7 @@ function createGrid(): string[][] {
 
 // Increment letter (A→B, Z→A)
 function nextLetter(letter: string): string {
-  return 'A'
   return letter === "Z" ? "A" : String.fromCharCode(letter.charCodeAt(0) + 1);
-}
-
-// Debug: prints board state
-export function printBoard(board: (string | undefined)[][], tiles: TileMap) {
-  const rendered = board
-    .map((row) => row.map((id) => (id ? tiles[id]?.value ?? "?" : "·")).join(" "))
-    .map((r) => `| ${r} |`);
-  console.log("\n" + rendered.join("\n"));
 }
 
 // ======================= INITIAL STATE =======================
@@ -133,7 +124,6 @@ function gameReducer(state: State = initialState, action: Action): State {
       const tileId = uid();
       const newBoard = JSON.parse(JSON.stringify(state.board));
       newBoard[y][x] = tileId;
-      console.log("CREATE_TILE fired:", tileId);
 
       return {
         ...state,

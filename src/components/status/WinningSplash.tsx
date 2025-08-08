@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Confetti from "react-confetti";
 import game from "../../constants/game";
-import "../../styles/Splash.css"; // includes .splash-win and .splash-text styles
+import "../../styles/Splash.css";
 
-function WinningSplash({ heading = "You Won!" }: { heading?: string }) {
+/**
+ * WinningSplash
+ * - Displays a "You Won" overlay with fade-in effect
+ */
+function WinningSplash({
+  heading = "You Won!",
+}: {
+  heading?: string;
+}): React.JSX.Element | null {
   const [visible, setVisible] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
@@ -25,17 +32,6 @@ function WinningSplash({ heading = "You Won!" }: { heading?: string }) {
       aria-live="polite"
       aria-label={heading}
     >
-      {showConfetti && (
-        <Confetti
-          numberOfPieces={game.CONFETTI_COUNT}
-          gravity={game.CONFETTI_FALL_SPEED / 100}
-          initialVelocityY={game.CONFETTI_EXPLOSION_SPEED}
-          recycle={false}
-          colors={game.CONFETTI_COLORS}
-          width={window.innerWidth}
-          height={window.innerHeight}
-        />
-      )}
       <span className="splash-text">{heading}</span>
     </div>
   );

@@ -5,8 +5,8 @@ import React, {
   useContext,
   ReactNode,
   useEffect,
-} from 'react';
-import backgroundMusic from '../assets/sounds/background-music.mp3'
+} from "react";
+import backgroundMusic from "../assets/sounds/background-music.mp3";
 
 type SoundContextType = {
   soundOn: boolean;
@@ -14,7 +14,7 @@ type SoundContextType = {
   isPlaying: boolean;
   playBackgroundMusic: () => void;
   stopBackgroundMusic: () => void;
-}
+};
 
 const SoundContext = createContext<SoundContextType | undefined>(undefined);
 
@@ -22,12 +22,19 @@ interface SoundContextProviderProps {
   children: ReactNode;
 }
 
-export const SoundProvider: React.FC<SoundContextProviderProps> = ({ children }) => {
+/**
+ * SoundProvider
+ * - Provides global sound state and controls
+ * - Handles background music play/pause
+ */
+export const SoundProvider: React.FC<SoundContextProviderProps> = ({
+  children,
+}) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [soundOn, setSoundOn] = useState(true);
 
-  // Effect to handle sound state changes
+  // Handle sound toggle changes
   useEffect(() => {
     if (soundOn) {
       if (audioRef.current) {
@@ -60,13 +67,15 @@ export const SoundProvider: React.FC<SoundContextProviderProps> = ({ children })
   };
 
   return (
-    <SoundContext.Provider value={{ 
-      isPlaying, 
-      playBackgroundMusic, 
-      stopBackgroundMusic,  
-      soundOn,
-      setSoundOn,
-    }}>
+    <SoundContext.Provider
+      value={{
+        isPlaying,
+        playBackgroundMusic,
+        stopBackgroundMusic,
+        soundOn,
+        setSoundOn,
+      }}
+    >
       <audio ref={audioRef} src={backgroundMusic} />
       {children}
     </SoundContext.Provider>
@@ -76,7 +85,9 @@ export const SoundProvider: React.FC<SoundContextProviderProps> = ({ children })
 export const useSoundContext = (): SoundContextType => {
   const context = useContext(SoundContext);
   if (!context) {
-    throw new Error('useSoundContext must be used within a SoundContextProvider');
+    throw new Error(
+      "useSoundContext must be used within a SoundContextProvider"
+    );
   }
   return context;
 };

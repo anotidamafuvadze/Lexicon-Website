@@ -1,95 +1,93 @@
-import { useCallback, useContext, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
+import useSound from "use-sound";
 import { Tile as TileModel } from "../../models/tile";
 import styles from "../../styles/GameGrid.module.css";
 import Tile from "../status/Tile";
-import { useGame } from '../../context/GameContext'
-import MobileSwiper, { SwipeInput } from '../status/MobileSwiper'
+import { useGame } from "../../context/GameContext";
+import MobileSwiper, { SwipeInput } from "../status/MobileSwiper";
 import LosingSplash from "../status/LosingSplash";
-import WinningSplash from "../status//WinningSplash";
+import WinningSplash from "../status/WinningSplash";
 import { useWord } from "../../context/WordContext";
-import whooshSound from '../../assets/sounds/screen-whoosh-sound.mp3'
-import useSound from "use-sound";
+import whooshSound from "../../assets/sounds/screen-whoosh-sound.mp3";
+import game from "../../constants/game";
 
-export default function GameGrid() {
-  const { getTiles, moveTiles, startNewGame, status } = useGame();
-  const { targetWord } = useWord()
-  const initialized = useRef(false);
+/**
+ * GameGrid
+ * - Main play surface: handles keyboard/swipe input
+ * - Renders cells/tiles and triggers move/cleanup/create animations
+ */
+export default function GameGrid(): React.JSX.Element {
+  const { getTiles, moveTiles, status, dispatch } = useGame();
   const [playWhooshSound] = useSound(whooshSound);
+
+  const finalizeMove = useCallback(() => {
+    setTimeout(() => {
+      dispatch({ type: "CLEAN_UP" });
+      setTimeout(() => {
+        dispatch({
+          type: "CREATE_TILE",
+          tile: { value: "A", justCreated: true },
+        });
+      }, 20);
+    }, game.MOVE_ANIMATION_DURATION);
+  }, [dispatch]);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      playWhooshSound();
-      // disables page scrolling with keyboard arrows
       e.preventDefault();
 
       switch (e.code) {
         case "ArrowUp":
           moveTiles("MOVE_UP");
+          finalizeMove();
           break;
         case "ArrowDown":
           moveTiles("MOVE_DOWN");
+          finalizeMove();
           break;
         case "ArrowLeft":
           moveTiles("MOVE_LEFT");
+          finalizeMove();
           break;
         case "ArrowRight":
           moveTiles("MOVE_RIGHT");
+          finalizeMove();
           break;
       }
     },
-    [moveTiles],
+    [moveTiles, finalizeMove]
   );
 
   const handleSwipe = useCallback(
     ({ deltaX, deltaY }: SwipeInput) => {
       playWhooshSound();
+
       if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        if (deltaX > 0) {
-          moveTiles("MOVE_RIGHT");
-        } else {
-          moveTiles("MOVE_LEFT");
-        }
+        moveTiles(deltaX > 0 ? "MOVE_RIGHT" : "MOVE_LEFT");
       } else {
-        if (deltaY > 0) {
-          moveTiles("MOVE_DOWN");
-        } else {
-          moveTiles("MOVE_UP");
-        }
+        moveTiles(deltaY > 0 ? "MOVE_DOWN" : "MOVE_UP");
       }
+
+      finalizeMove();
     },
-    [moveTiles],
+    [moveTiles, finalizeMove, playWhooshSound]
   );
 
   const renderGrid = () => {
     const cells: React.JSX.Element[] = [];
-    const totalCellsCount = 16;
-
-    for (let index = 0; index < totalCellsCount; index += 1) {
-      cells.push(<div className={styles.cell} key={index} />);
-    }
-
+    for (let i = 0; i < 16; i += 1)
+      cells.push(<div className={styles.cell} key={i} />);
     return cells;
   };
 
-  const renderTiles = () => {
-    return getTiles().map((tile: TileModel) => (
-      <Tile tileID={tile.id} isInTarget={false} key={`${tile.id}`} {...tile} />
+  const renderTiles = () =>
+    getTiles().map((tile: TileModel) => (
+      <Tile tileID={tile.id} isInTarget={false} key={tile.id} {...tile} />
     ));
-  };
-
-  useEffect(() => {
-    if (initialized.current === false) {
-      startNewGame();
-      initialized.current = true;
-    }
-  }, [startNewGame]);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
 
   return (
