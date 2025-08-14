@@ -1,54 +1,61 @@
+/* ================== Responsive Scaling ================== */
+:root {
+  /* Base design size = 14" MacBook Pro CSS pixel size */
+  --base-w: 1512;
+  --base-h: 982;
+
+  /* Scale relative to smaller axis for cross-device fit */
+  --s: min(calc(100vw / var(--base-w)), calc(100vh / var(--base-h)));
+
+  /* Global font sizing: scales with screen, clamped for readability */
+  --font-base: clamp(14px, calc(12px + 0.7vmin), 20px);
+}
+
+html { font-size: var(--font-base); }
+
 /* ================== Difficulty Screen Styles ================== */
 
 .difficulty-button-group {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: calc(100px * var(--s));
+  gap: calc(40px * var(--s));
 }
 
 .difficulty-button {
-  padding: 0px 60px;
-  border-radius: 65px;
-  border: 6px solid rgb(37, 34, 30);
-  box-shadow: 0px 9px 0px rgb(117, 109, 95);
+  padding: calc(0px * var(--s)) calc(60px * var(--s));
+  border-radius: calc(65px * var(--s));
+  border: calc(6px * var(--s)) solid rgb(37, 34, 30);
+  box-shadow: 0px calc(9px * var(--s)) 0px rgb(117, 109, 95);
+
   font-family: "Montserrat", sans-serif;
-  font-size: 2.3rem;
+  font-size: clamp(1.1rem, calc(1rem + 2.2vmin), 2.3rem);
   font-weight: 900;
-  color: rgb(255, 255, 255);
-  letter-spacing: 1px;
+  color: #fff;
+  letter-spacing: calc(1px * var(--s));
   text-align: center;
-  text-shadow: 2px 2px 0px #000000;
+  text-shadow: calc(2px * var(--s)) calc(2px * var(--s)) 0px #000;
+
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 40px;
+  transition: background-color 0.3s ease, transform 0.05s ease;
+  margin-top: calc(40px * var(--s));
+}
+
+.difficulty-button:active {
+  transform: translateY(calc(3px * var(--s)));
+  box-shadow: 0px calc(6px * var(--s)) 0px rgb(117, 109, 95);
 }
 
 /* ====== Difficulty Variants ====== */
-.easy-button {
-  background-color: rgba(137, 166, 137, 1);
-}
-
-.normal-button {
-  background-color: rgba(230, 208, 139, 1);
-}
-
-.hard-button {
-  background-color: rgba(157, 85, 78, 1);
-}
+.easy-button   { background-color: rgba(137, 166, 137, 1); }
+.normal-button { background-color: rgba(230, 208, 139, 1); }
+.hard-button   { background-color: rgba(157, 85, 78, 1); }
 
 /* ====== Hover States ====== */
-.easy-button:hover {
-  background-color: rgb(165, 195, 165);
-}
-
-.normal-button:hover {
-  background-color: rgb(236, 218, 165);
-}
-
-.hard-button:hover {
-  background-color: rgb(171, 97, 91);
-}
+.easy-button:hover   { background-color: rgb(165, 195, 165); }
+.normal-button:hover { background-color: rgb(236, 218, 165); }
+.hard-button:hover   { background-color: rgb(171, 97, 91); }
 
 /* ====== Layout ====== */
 .difficulty-text-column {
@@ -56,10 +63,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: calc(16px * var(--s));
 }
 
 /* ====== Label Image ====== */
 .difficulty-label {
-  width: 220px;
-  height: 120px;
+  width:  calc(220px * var(--s));
+  height: calc(120px * var(--s));
+  object-fit: contain;
+}
+
+/* ====== Optional: widen spacing for large displays ====== */
+@media (min-width: 1024px) and (min-height: 768px) {
+  :root { --font-base: clamp(15px, calc(12px + 0.8vmin), 22px); }
+  .difficulty-button-group { gap: calc(48px * var(--s)); }
 }
