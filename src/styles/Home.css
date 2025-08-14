@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 5vh;
   color: rgb(46, 46, 43);
 }
 
@@ -20,20 +20,22 @@
 
 .App-title {
   position: relative;
-  top: -40px;
-  font-size: 4.3rem;
+  top: -4vh;
+  font-size: clamp(2.5rem, 8vw, 4.3rem);
   font-family: "Montserrat";
   font-weight: 900;
   margin: 0;
+  padding: 0 1rem;
 }
 
 .App-subtitle {
   position: relative;
-  top: -45px;
+  top: -4.5vh;
   margin-top: 0;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 4vw, 1.5rem);
   font-family: "Montserrat";
   font-weight: 500;
+  padding: 0 1rem;
 }
 
 /* ================== Game Area ================== */
@@ -45,6 +47,7 @@
   justify-content: center;
   flex-grow: 1;
   width: 100%;
+  padding: 0 1rem;
 }
 
 /* ================== Target Word ================== */
@@ -53,8 +56,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: -5px;
-  top: -37px;
+  margin-bottom: -0.5rem;
+  top: -3.7vh;
 }
 
 .default-target-word {
@@ -66,49 +69,56 @@
   font-family: "Montserrat";
   color: white;
   text-shadow: 1px 1.5px 0px black;
-  font-size: 1.7rem;
-  margin-bottom: -5px;
+  font-size: clamp(1.2rem, 4vw, 1.7rem);
+  margin-bottom: -0.5rem;
 }
 
 .target-word {
   font-family: "Montserrat";
   color: white;
   text-shadow: 1px 3px 0px black;
-  font-size: 4.4rem;
+  font-size: clamp(2.5rem, 10vw, 4.4rem);
   font-weight: bold;
+  word-break: break-word;
+  padding: 0 1rem;
 }
 
 /* ================== Button Group ================== */
 .button-group {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: clamp(1rem, 3vw, 20px);
   position: relative;
-  top: -30px;
+  top: -3vh;
+  width: 90%;
+  max-width: 600px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .button-group button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 20px;
-  font-size: 1.6rem;
+  padding: 0.8rem clamp(1rem, 3vw, 1.5rem);
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
   font-family: "Montserrat";
   font-weight: 900;
   border-style: solid;
-  border-radius: 27px;
-  box-shadow: 0 5px 0px rgba(0, 0, 0, 0.6);
+  border-radius: 2rem;
+  box-shadow: 0 0.3rem 0px rgba(0, 0, 0, 0.6);
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
   text-align: center;
   color: rgb(51, 50, 46);
+  min-width: 120px;
+  flex-grow: 1;
 }
 
 .button-group button:hover {
   background-color: #f0f0f0;
 }
 
-/* ================== Button Variants ================== */
 .new-game-button {
   background-color: rgba(224, 224, 224, 1);
 }
@@ -125,6 +135,47 @@
 
 .back-button-icon {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: clamp(60px, 15vw, 100px);
+  height: clamp(60px, 15vw, 100px);
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding-top: 3vh;
+  }
+  
+  .button-group {
+    gap: 1rem;
+    top: -2vh;
+  }
+  
+  .target-word-container {
+    top: -2vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .App-title {
+    top: -2vh;
+  }
+  
+  .App-subtitle {
+    top: -2.5vh;
+  }
+  
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 80%;
+  }
+  
+  .button-group button {
+    width: 100%;
+  }
+  
+  .back-button-icon {
+    width: 50px;
+    height: 50px;
+  }
 }
