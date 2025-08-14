@@ -148,6 +148,7 @@ function Home(): React.JSX.Element {
 
   // Start music after first click (autoplay)
   useEffect(() => {
+    if (showMobileGate) return;
     const startMusicOnClick = () => {
       playBackgroundMusic();
       window.removeEventListener("click", startMusicOnClick);
