@@ -4,7 +4,7 @@
   justify-content: center;
   position: relative;
   top: -5vh;
-  gap: clamp(1rem, 2vw, 25px);
+  gap: clamp(0.8rem, 2vw, 20px);
   width: 100%;
   padding: 0 0.5rem;
   flex-wrap: nowrap;
@@ -14,17 +14,17 @@
 .game-board {
   background-color: rgb(247, 241, 237);
   border: 0.15rem solid rgba(27, 25, 24, 1);
-  border-radius: 2rem;
-  height: clamp(4.5rem, 11vw, 75px);
-  min-width: 130px;
+  border-radius: 1.8rem;
+  height: clamp(3.5rem, 9vw, 65px);
+  min-width: 110px;
   text-align: center;
-  box-shadow: 0 0.5rem 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0.4rem 0px rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: "Montserrat";
-  padding: 0.6rem 0.8rem;
+  padding: 0.5rem 0.7rem;
   flex-shrink: 1;
 }
 
@@ -52,7 +52,7 @@
 /* ================== Game Board Text ================== */
 .game-board h2 {
   font-family: "Montserrat";
-  font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+  font-size: clamp(1rem, 3.2vw, 1.5rem);
   font-weight: bold;
   margin: 0;
   line-height: 1.1;
@@ -60,7 +60,7 @@
 
 .game-board p {
   font-family: "Montserrat";
-  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-size: clamp(1.1rem, 3.6vw, 1.6rem);
   font-weight: bold;
   margin: 0;
   line-height: 1.1;
@@ -68,21 +68,23 @@
 
 @media (max-width: 480px) {
   .score-pops {
+    top: -3vh;
+    gap: 0.6rem;
     padding: 0 0.3rem;
-    gap: clamp(0.8rem, 2vw, 15px);
   }
   
   .game-board {
-    min-width: 110px;
-    padding: 0.5rem 0.6rem;
-    height: clamp(4rem, 12vw, 70px);
+    height: 3rem;
+    min-width: 90px;
+    border-radius: 1.5rem;
+    padding: 0.4rem 0.6rem;
   }
   
   .game-board h2 {
-    font-size: clamp(1.1rem, 3.8vw, 1.6rem);
+    font-size: 0.9rem;
   }
   
   .game-board p {
-    font-size: clamp(1.2rem, 4.2vw, 1.7rem);
+    font-size: 1rem;
   }
 }
