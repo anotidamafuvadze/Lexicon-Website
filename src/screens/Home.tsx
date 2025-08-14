@@ -21,6 +21,7 @@ import GameBoard from "../components/status/GameBoard";
 import { useSoundContext } from "../context/SoundContext";
 import { useWord } from "../context/WordContext";
 import { useGame } from "../context/GameContext";
+import { Analytics } from "@vercel/analytics/react"
 
 /**
  * Device detection helpers
