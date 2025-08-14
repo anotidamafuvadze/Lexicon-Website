@@ -6,7 +6,7 @@
   top: -5vh;
   gap: clamp(1rem, 3vw, 30px);
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 0.8rem;
 }
 
 /* ================== Game Board Base Styles ================== */
