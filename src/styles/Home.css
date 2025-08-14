@@ -154,6 +154,85 @@
   }
 }
 
+.mobile-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.mobile-modal__card {
+  position: relative;
+  max-width: 28rem;
+  width: 90%;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.25rem 1.25rem 1rem;
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.3);
+  text-align: center;
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.mobile-modal__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #222;
+}
+
+.mobile-modal__text {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.mobile-modal__actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mobile-modal__primary,
+.mobile-modal__secondary {
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  font-weight: 800;
+  border: none;
+  box-shadow: 0 0.3rem 0 rgba(0,0,0,0.25);
+}
+
+.mobile-modal__primary {
+  background: #007aff;
+  color: #fff;
+}
+
+.mobile-modal__primary:hover { filter: brightness(1.05); }
+
+.mobile-modal__secondary {
+  background: #eee;
+  color: #333;
+}
+
+.mobile-modal__secondary:hover { background: #f4f4f4; }
+
+.mobile-modal__close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.6rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #666;
+}
+
+
 @media (max-width: 480px) {
   .App-title {
     top: -2vh;

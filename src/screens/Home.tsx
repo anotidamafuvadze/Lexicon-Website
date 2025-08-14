@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import useSound from "use-sound";
 
@@ -23,10 +23,37 @@ import { useWord } from "../context/WordContext";
 import { useGame } from "../context/GameContext";
 
 /**
+ * Device detection helpers
+ * - macOS desktop/laptop (do NOT show gate)
+ * - iOS/iPadOS/Android (show gate)
+ * - iPadOS 13+ reports "MacIntel" + touchpoints > 1 (should show gate)
+ */
+function isMacDesktop(): boolean {
+  const ua = navigator.userAgent || "";
+  const platform = (navigator.platform || "").toLowerCase();
+
+  const isMacUA = /Macintosh|Mac OS X/i.test(ua);
+  const isMacPlatform = /macintel|macppc|mac68k/i.test(platform);
+
+  // True macOS: has 0 (or undefined) touch points.
+  const maxTP = (navigator as any).maxTouchPoints ?? 0;
+  const looksLikeRealMac = (isMacUA || isMacPlatform) && maxTP < 2; // iPadOS has >=2
+
+  return looksLikeRealMac;
+}
+
+function isMobileOrTablet(): boolean {
+  const ua = navigator.userAgent || "";
+  const isAndroid = /Android/i.test(ua);
+  const isIOSUA = /iPhone|iPad|iPod/i.test(ua);
+  const isIPadOS13Plus =
+    navigator.platform === "MacIntel" && (navigator as any).maxTouchPoints > 1;
+
+  return isAndroid || isIOSUA || isIPadOS13Plus;
+}
+
+/**
  * Home
- * - Main game screen
- * - Displays game board, score, pops, and target word
- * - Handles theme changes, win sound sequence, and button navigation
  */
 function Home(): React.JSX.Element {
   const { targetWord, generateNewWord, currentTheme } = useWord();
@@ -41,15 +68,16 @@ function Home(): React.JSX.Element {
   const prevStatus = useRef(status);
 
   const [canClick, setCanClick] = useState(true);
-  const [backgroundImage, setBackgroundImage] = useState(
-    defaultBackgroundImage
-  );
+  const [backgroundImage, setBackgroundImage] = useState(defaultBackgroundImage);
   const [gameBoardStyle, setGameBoardStyle] = useState("game-board");
   const [targetWordStyle, setTargetWordStyle] = useState("");
   const [title, setTitle] = useState("LEXICON");
   const [subtitle, setSubtitle] = useState<React.JSX.Element | string>("");
 
-  // Handle win state: stop music, play win sound, then resume
+  // Gate state: show only on non-laptop (mobile/tablet), never on macOS desktop/laptop
+  const [showMobileGate, setShowMobileGate] = useState(false);
+
+  // Win state
   useEffect(() => {
     const isNewWin = status === "WON" && prevStatus.current !== "WON";
     if (isNewWin) {
@@ -67,7 +95,7 @@ function Home(): React.JSX.Element {
     prevStatus.current = status;
   }, [status, stopBackgroundMusic, playWinSound, playBackgroundMusic]);
 
-  // Update visuals based on theme
+  // Theme visuals
   useEffect(() => {
     const changeTheme = (theme: string) => {
       switch (theme) {
@@ -118,17 +146,31 @@ function Home(): React.JSX.Element {
     changeTheme(currentTheme);
   }, [currentTheme]);
 
-  // Start music after first click to bypass autoplay restrictions
+  // Start music after first click (autoplay)
   useEffect(() => {
     const startMusicOnClick = () => {
       playBackgroundMusic();
       window.removeEventListener("click", startMusicOnClick);
     };
     window.addEventListener("click", startMusicOnClick);
-    return () => {
-      window.removeEventListener("click", startMusicOnClick);
-    };
+    return () => window.removeEventListener("click", startMusicOnClick);
+  }, [playBackgroundMusic]);
+
+  // Decide if we should show the mobile gate.
+  // Logic: show if it's a mobile/tablet AND not a real macOS desktop/laptop.
+  useEffect(() => {
+    try {
+      if (!isMacDesktop() && isMobileOrTablet()) {
+        setShowMobileGate(true);
+      }
+    } catch {
+      // Fail-safe: do nothing (no gate)
+    }
   }, []);
+
+  const openAppStore = () => {
+    window.location.href = "https://apps.apple.com/us/app/lexicon/id6749748377";
+  };
 
   const handleNewGame = () => {
     playButtonClick();
@@ -141,10 +183,58 @@ function Home(): React.JSX.Element {
     navigate("/menu");
   };
 
+  // If gate is shown, render ONLY the white gate screen (no background content)
+  if (showMobileGate) {
+    return (
+      <div
+        className="mobile-gate"
+        style={{
+          background: "#ffffff",
+          color: "#111",
+          minHeight: "100vh",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "2rem",
+          textAlign: "center",
+          fontFamily:
+            '"Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif',
+        }}
+      >
+        <div style={{ maxWidth: 480 }}>
+          <h1 style={{ margin: 0, fontWeight: 900, fontSize: "1.75rem" }}>
+            Play Lexicon on Mobile
+          </h1>
+          <p style={{ margin: "0.75rem 0 1.25rem", fontSize: "1rem" }}>
+            Get the best experience on your device with the Lexicon app.
+          </p>
+          <button
+            onClick={openAppStore}
+            style={{
+              cursor: "pointer",
+              borderRadius: 999,
+              padding: "0.9rem 1.25rem",
+              fontWeight: 800,
+              border: "none",
+              boxShadow: "0 0.3rem 0 rgba(0,0,0,0.2)",
+              background: "#007aff",
+              color: "#fff",
+              fontSize: "1rem",
+            }}
+          >
+            Open in App Store
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Otherwise render the normal game UI
   return (
     <div className="App" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700;900&display=swap"
         rel="stylesheet"
       />
       <div style={{ marginLeft: "26px" }}>
@@ -172,12 +262,8 @@ function Home(): React.JSX.Element {
 
         <div className="game-area">
           <div className="target-word-container">
-            <h2 className={`target-word-title ${targetWordStyle}`}>
-              YOUR WORD:
-            </h2>
-            <span className={`target-word ${targetWordStyle}`}>
-              {targetWord}
-            </span>
+            <h2 className={`target-word-title ${targetWordStyle}`}>YOUR WORD:</h2>
+            <span className={`target-word ${targetWordStyle}`}>{targetWord}</span>
           </div>
 
           <div className="button-group">
