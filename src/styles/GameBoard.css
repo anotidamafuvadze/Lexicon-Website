@@ -3,18 +3,18 @@
   display: flex;
   justify-content: center;
   position: relative;
-  top: -55px;
-  gap: 30px;
+  top: -3.4375rem; /* -55px */
+  gap: 1.875rem; /* 30px */
 }
 
 /* ================== Game Board Base Styles ================== */
 .game-board {
   background-color: rgb(247, 241, 237);
-  border: 2.5px solid rgba(27, 25, 24, 1);
-  border-radius: 30px;
-  height: 70px;
+  border: 0.15625rem solid rgba(27, 25, 24, 1); /* 2.5px */
+  border-radius: 1.875rem; /* 30px */
+  height: 4.375rem; /* 70px */
   text-align: center;
-  box-shadow: 0 8px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0.5rem 0 rgba(0, 0, 0, 0.6); /* 8px */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,37 +23,22 @@
 }
 
 /* ================== Theme Variants ================== */
-.nature {
-  background-color: rgb(240, 242, 228);
-  color: rgb(43, 40, 33);
-}
-
-.food {
-  background-color: rgb(233, 219, 206);
-  color: rgb(35, 32, 32);
-}
-
-.animals {
-  background-color: rgb(237, 243, 246);
-  color: rgb(37, 35, 32);
-}
-
-.story {
-  background-color: rgba(250, 240, 230, 1);
-  color: rgba(44, 33, 25, 1);
-}
+.nature  { background-color: rgb(240, 242, 228); color: rgb(43, 40, 33); }
+.food    { background-color: rgb(233, 219, 206); color: rgb(35, 32, 32); }
+.animals { background-color: rgb(237, 243, 246); color: rgb(37, 35, 32); }
+.story   { background-color: rgba(250, 240, 230, 1); color: rgba(44, 33, 25, 1); }
 
 /* ================== Game Board Text ================== */
 .game-board h2 {
   font-family: "Montserrat";
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* unchanged */
   font-weight: bold;
   margin: 0;
 }
 
 .game-board p {
   font-family: "Montserrat";
-  font-size: 1.6rem;
+  font-size: 1.6rem; /* unchanged */
   font-weight: bold;
   margin: 0;
 }
