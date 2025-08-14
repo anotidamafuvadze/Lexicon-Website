@@ -1,6 +1,7 @@
 /* ================== Root Variables ================== */
 :root {
-  --pixel-size: 7.5px;
+  --pixel-size: clamp(5px, 2vw, 7.5px);
+  --mobile-scale: 0.85;
 }
 
 /* ================== Board Layout ================== */
@@ -8,10 +9,10 @@
   position: relative;
   width: calc(var(--pixel-size) * 9.5 * 4 + var(--pixel-size) * 4);
   margin: 0 auto;
-  border-radius: 22px;
+  border-radius: calc(var(--pixel-size) * 3);
   background-color: rgb(66, 56, 48);
-  top: -25px;
-  margin-top: -12px;
+  top: calc(var(--pixel-size) * -3.3);
+  margin-top: calc(var(--pixel-size) * -1.6);
   padding: calc(var(--pixel-size) * 0.32) calc(var(--pixel-size) * 0.16);
 }
 
@@ -21,7 +22,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  border-radius: 18px;
+  border-radius: calc(var(--pixel-size) * 2.4);
   background-color: rgb(66, 56, 48);
 }
 
@@ -29,9 +30,9 @@
   width: calc(var(--pixel-size) * 10.2);
   height: calc(var(--pixel-size) * 10.2);
   margin: calc(var(--pixel-size) * 0.26);
-  border-radius: 18px;
+  border-radius: calc(var(--pixel-size) * 2.4);
   background-color: rgb(132, 114, 100);
-  box-shadow: inset 0 0 0 4px black;
+  box-shadow: inset 0 0 0 calc(var(--pixel-size) * 0.53) black;
 }
 
 /* ================== Tiles Layer ================== */
@@ -45,11 +46,24 @@
   margin: calc(var(--pixel-size) * 0.32) calc(var(--pixel-size) * 0.16);
 }
 
-/* ================== Responsive (≥512px) ================== */
+/* ================== Mobile Scaling ================== */
+@media (max-width: 480px) {
+  :root {
+    --pixel-size: clamp(4px, 1.8vw, 5px);
+  }
+  
+  .board {
+    transform: scale(var(--mobile-scale));
+    transform-origin: top center;
+    margin-bottom: calc(var(--pixel-size) * -8);
+  }
+}
+
+/* ================== Tablet/Desktop Scaling ================== */
 @media (min-width: 512px) {
   .board {
     width: calc(var(--pixel-size) * 11.8 * 4 + var(--pixel-size) * 7);
-    border-radius: 20px;
+    border-radius: calc(var(--pixel-size) * 2.7);
     padding: calc(var(--pixel-size) * 1.5) calc(var(--pixel-size) * 0.2);
   }
 
@@ -57,10 +71,16 @@
     width: calc(var(--pixel-size) * 12.2);
     height: calc(var(--pixel-size) * 12.2);
     margin: calc(var(--pixel-size) * 0.35);
-    border-radius: 20px;
+    border-radius: calc(var(--pixel-size) * 2.7);
   }
 
   .tiles {
     margin: calc(var(--pixel-size) * 0.4) calc(var(--pixel-size) * 0.2);
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --pixel-size: 8px;
   }
 }
