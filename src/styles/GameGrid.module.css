@@ -1,19 +1,19 @@
 /* ================== Root Variables ================== */
 :root {
-  --pixel-size: clamp(6px, 1.8vw, 7.5px); /* Slightly larger base size */
-  --mobile-scale: 0.9; /* Less aggressive scaling */
+  --pixel-size: clamp(5px, 2vw, 7.5px);
+  --mobile-scale: 0.85;
 }
 
 /* ================== Board Layout ================== */
 .board {
   position: relative;
-  width: calc(var(--pixel-size) * 9 * 4 + var(--pixel-size) * 4); /* Slightly tighter grid */
+  width: calc(var(--pixel-size) * 9.5 * 4 + var(--pixel-size) * 4);
   margin: 0 auto;
-  border-radius: 20px;
+  border-radius: calc(var(--pixel-size) * 3);
   background-color: rgb(66, 56, 48);
-  top: -20px;
-  margin-top: -10px;
-  padding: 2px 1px; /* Simplified padding */
+  top: calc(var(--pixel-size) * -3.3);
+  margin-top: calc(var(--pixel-size) * -1.6);
+  padding: calc(var(--pixel-size) * 0.32) calc(var(--pixel-size) * 0.16);
 }
 
 /* ================== Grid & Cells ================== */
@@ -22,17 +22,17 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  border-radius: 16px;
+  border-radius: calc(var(--pixel-size) * 2.4);
   background-color: rgb(66, 56, 48);
 }
 
 .cell {
-  width: calc(var(--pixel-size) * 9.5); /* Smaller cells */
-  height: calc(var(--pixel-size) * 9.5);
-  margin: 2px; /* Fixed margin for consistency */
-  border-radius: 16px;
+  width: calc(var(--pixel-size) * 10.2);
+  height: calc(var(--pixel-size) * 10.2);
+  margin: calc(var(--pixel-size) * 0.26);
+  border-radius: calc(var(--pixel-size) * 2.4);
   background-color: rgb(132, 114, 100);
-  box-shadow: inset 0 0 0 3px black; /* Thinner border */
+  box-shadow: inset 0 0 0 calc(var(--pixel-size) * 0.53) black;
 }
 
 /* ================== Tiles Layer ================== */
@@ -43,42 +43,44 @@
   top: 0;
   right: 0;
   bottom: 0;
-  margin: 2px 1px;
+  margin: calc(var(--pixel-size) * 0.32) calc(var(--pixel-size) * 0.16);
 }
 
 /* ================== Mobile Scaling ================== */
 @media (max-width: 480px) {
   :root {
-    --pixel-size: 5.5px; /* Less reduction on mobile */
+    --pixel-size: clamp(4px, 1.8vw, 5px);
   }
   
   .board {
-    transform: scale(0.95); /* Minimal scaling */
+    transform: scale(var(--mobile-scale));
     transform-origin: top center;
-    margin-bottom: -15px;
-  }
-  
-  .cell {
-    margin: 1.5px; /* Tighter spacing */
+    margin-bottom: calc(var(--pixel-size) * -8);
   }
 }
 
 /* ================== Tablet/Desktop Scaling ================== */
 @media (min-width: 512px) {
   .board {
-    width: calc(var(--pixel-size) * 10 * 4 + var(--pixel-size) * 4); /* More modest increase */
-    padding: 3px 2px;
+    width: calc(var(--pixel-size) * 11.8 * 4 + var(--pixel-size) * 7);
+    border-radius: calc(var(--pixel-size) * 2.7);
+    padding: calc(var(--pixel-size) * 1.5) calc(var(--pixel-size) * 0.2);
   }
 
   .cell {
-    width: calc(var(--pixel-size) * 10.5);
-    height: calc(var(--pixel-size) * 10.5);
-    margin: 2.5px;
+    width: calc(var(--pixel-size) * 12.2);
+    height: calc(var(--pixel-size) * 12.2);
+    margin: calc(var(--pixel-size) * 0.35);
+    border-radius: calc(var(--pixel-size) * 2.7);
+  }
+
+  .tiles {
+    margin: calc(var(--pixel-size) * 0.4) calc(var(--pixel-size) * 0.2);
   }
 }
 
 @media (min-width: 768px) {
   :root {
-    --pixel-size: 7px; /* More gradual increase */
+    --pixel-size: 8px;
   }
 }
