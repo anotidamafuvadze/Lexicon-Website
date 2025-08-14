@@ -1,56 +1,41 @@
+/* Lock base so rems match your current px sizes exactly */
+:root { font-size: 16px; }
+
 /* ================== Difficulty Screen Styles ================== */
+
 .difficulty-button-group {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10vh; 
-  width: 100%;
+  margin-top: 6.25rem; /* 100px */
 }
 
 .difficulty-button {
-  padding: 1rem 4rem;
-  border-radius: 4rem;
-  border: 0.4rem solid rgb(3, 3, 2);
-  box-shadow: 0px 0.6rem 0px rgb(117, 109, 95);
+  padding: 0 3.75rem; /* 0px 60px */
+  border-radius: 4.0625rem; /* 65px */
+  border: 0.375rem solid rgb(37, 34, 30); /* 6px */
+  box-shadow: 0 0.5625rem 0 rgb(117, 109, 95); /* 9px */
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(1.5rem, 5vw, 2.3rem);
+  font-size: 2.3rem; /* unchanged */
   font-weight: 900;
   color: rgb(255, 255, 255);
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.0625rem; /* 1px */
   text-align: center;
-  text-shadow: 0.125rem 0.125rem 0px #000000;
+  text-shadow: 0.125rem 0.125rem 0 #000000; /* 2px 2px 0 */
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 2rem;
-  width: 80%; /* Relative width */
-  max-width: 400px; /* Maximum size */
+  transition: background-color 0.3s ease;
+  margin-top: 2.5rem; /* 40px */
 }
 
 /* ====== Difficulty Variants ====== */
-.easy-button {
-  background-color: rgba(137, 166, 137, 1);
-}
-
-.normal-button {
-  background-color: rgba(230, 208, 139, 1);
-}
-
-.hard-button {
-  background-color: rgba(157, 85, 78, 1);
-}
+.easy-button   { background-color: rgba(137, 166, 137, 1); }
+.normal-button { background-color: rgba(230, 208, 139, 1); }
+.hard-button   { background-color: rgba(157, 85, 78, 1); }
 
 /* ====== Hover States ====== */
-.easy-button:hover {
-  background-color: rgb(165, 195, 165);
-}
-
-.normal-button:hover {
-  background-color: rgb(236, 218, 165);
-}
-
-.hard-button:hover {
-  background-color: rgb(171, 97, 91);
-}
+.easy-button:hover   { background-color: rgb(165, 195, 165); }
+.normal-button:hover { background-color: rgb(236, 218, 165); }
+.hard-button:hover   { background-color: rgb(171, 97, 91); }
 
 /* ====== Layout ====== */
 .difficulty-text-column {
@@ -58,37 +43,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 /* ====== Label Image ====== */
 .difficulty-label {
-  width: min(220px, 50vw); /* Responsive width */
-  height: auto; /* Maintain aspect ratio */
-}
-
-/* ====== Media Queries for Smaller Screens ====== */
-@media (max-width: 768px) {
-  .difficulty-button {
-    padding: 0.8rem 3rem;
-    font-size: 1.8rem;
-    margin-top: 1.5rem;
-  }
-  
-  .difficulty-button-group {
-    margin-top: 5vh;
-  }
-}
-
-@media (max-width: 480px) {
-  .difficulty-button {
-    padding: 0.6rem 2rem;
-    font-size: 1.5rem;
-    border-width: 0.3rem;
-    margin-top: 1rem;
-  }
-  
-  .difficulty-label {
-    width: min(180px, 40vw);
-  }
+  width: 13.75rem;  /* 220px */
+  height: 7.5rem;   /* 120px */
 }
