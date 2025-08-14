@@ -1,27 +1,29 @@
 /* ================== Difficulty Screen Styles ================== */
-
 .difficulty-button-group {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 10vh; 
+  width: 100%;
 }
 
 .difficulty-button {
-  padding: 0px 60px;
-  border-radius: 65px;
-  border: 6px solid rgb(3, 3, 2);
-  box-shadow: 0px 9px 0px rgb(117, 109, 95);
+  padding: 1rem 4rem;
+  border-radius: 4rem;
+  border: 0.4rem solid rgb(3, 3, 2);
+  box-shadow: 0px 0.6rem 0px rgb(117, 109, 95);
   font-family: "Montserrat", sans-serif;
-  font-size: 2.3rem;
+  font-size: clamp(1.5rem, 5vw, 2.3rem);
   font-weight: 900;
   color: rgb(255, 255, 255);
-  letter-spacing: 1px;
+  letter-spacing: 0.1rem;
   text-align: center;
-  text-shadow: 2px 2px 0px #000000;
+  text-shadow: 0.125rem 0.125rem 0px #000000;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 40px;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  width: 80%; /* Relative width */
+  max-width: 400px; /* Maximum size */
 }
 
 /* ====== Difficulty Variants ====== */
@@ -56,10 +58,37 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 /* ====== Label Image ====== */
 .difficulty-label {
-  width: 220px;
-  height: 120px;
+  width: min(220px, 50vw); /* Responsive width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* ====== Media Queries for Smaller Screens ====== */
+@media (max-width: 768px) {
+  .difficulty-button {
+    padding: 0.8rem 3rem;
+    font-size: 1.8rem;
+    margin-top: 1.5rem;
+  }
+  
+  .difficulty-button-group {
+    margin-top: 5vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .difficulty-button {
+    padding: 0.6rem 2rem;
+    font-size: 1.5rem;
+    border-width: 0.3rem;
+    margin-top: 1rem;
+  }
+  
+  .difficulty-label {
+    width: min(180px, 40vw);
+  }
 }
