@@ -10,7 +10,6 @@ root.render(
   <BrowserRouter>
     <React.StrictMode>
       <App />
-      <Analytics />
     </React.StrictMode>
   </BrowserRouter>
 );

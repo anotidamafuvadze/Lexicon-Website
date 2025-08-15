@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6871a970.css",
+    "main.js": "/static/js/main.294c4ac2.js",
+    "static/js/885.fb02333d.chunk.js": "/static/js/885.fb02333d.chunk.js",
+    "static/js/453.724bc08a.chunk.js": "/static/js/453.724bc08a.chunk.js",
+    "static/media/background-music.mp3": "/static/media/background-music.20ec489d79925730b271.mp3",
+    "static/media/nature-screen-background.png": "/static/media/nature-screen-background.c23e200ee2134b70a86c.png",
+    "static/media/default-screen-background.png": "/static/media/default-screen-background.85dd29675e7e9aeb1e3b.png",
+    "static/media/animals-screen-background.png": "/static/media/animals-screen-background.b5313c5cbf18b72f1a9c.png",
+    "static/media/food-screen-background.png": "/static/media/food-screen-background.2472ede89a5801422d2d.png",
+    "static/media/story-screen-background.png": "/static/media/story-screen-background.c2f4137474222a6a0559.png",
+    "static/media/win-sound.mp3": "/static/media/win-sound.3e321acdf2d53af3cd6a.mp3",
+    "static/media/story-icon.png": "/static/media/story-icon.fdf580f9e89432eab1fa.png",
+    "static/media/food-icon.png": "/static/media/food-icon.c1f511253583727c4b0b.png",
+    "static/media/animals-icon.png": "/static/media/animals-icon.b4357993f672fe92b6da.png",
+    "static/media/nature-icon.png": "/static/media/nature-icon.2b9c124c87f456da7baf.png",
+    "static/media/classic-icon.png": "/static/media/classic-icon.ffb6d4dbcabe541c0324.png",
+    "static/media/normal-label.png": "/static/media/normal-label.dc6045d7303a4baea78a.png",
+    "static/media/easy-label.png": "/static/media/easy-label.7792428d4b6e73c4da1e.png",
+    "static/media/button-pop-sound.mp3": "/static/media/button-pop-sound.33da6b4b147b36c54f25.mp3",
+    "static/media/x-icon.png": "/static/media/x-icon.3ba560a610dcce3744c0.png",
+    "static/media/hard-label.png": "/static/media/hard-label.b5993a0e6c4089e550a7.png",
+    "static/media/tile-grow-sound.mp3": "/static/media/tile-grow-sound.90153f422e2cf61ec145.mp3",
+    "static/media/instagram-icon.png": "/static/media/instagram-icon.0bcb084b89be1aca4419.png",
+    "static/media/tiktok-icon.png": "/static/media/tiktok-icon.b66a63e3b350941a5b5e.png",
+    "static/media/back-button-icon.png": "/static/media/back-button-icon.fa6a100da7d2a3d8dfc5.png",
+    "static/media/button-click-sound.mp3": "/static/media/button-click-sound.07f85c46d6f486aafb45.mp3",
+    "static/media/tile-unlock-sound.mp3": "/static/media/tile-unlock-sound.d0b4fdbb8bc02975aade.mp3",
+    "static/media/tile-lock-sound.mp3": "/static/media/tile-lock-sound.362bf725c47b3db1df04.mp3",
+    "static/media/screen-whoosh-sound.mp3": "/static/media/screen-whoosh-sound.f989fac90e0ed2e81262.mp3",
+    "index.html": "/index.html",
+    "main.6871a970.css.map": "/static/css/main.6871a970.css.map",
+    "main.294c4ac2.js.map": "/static/js/main.294c4ac2.js.map",
+    "885.fb02333d.chunk.js.map": "/static/js/885.fb02333d.chunk.js.map",
+    "453.724bc08a.chunk.js.map": "/static/js/453.724bc08a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6871a970.css",
+    "static/js/main.294c4ac2.js"
+  ]
+}
