@@ -1,4 +1,4 @@
-# Lexicon (20Wordy8)
+# Lexicon (Website)
 
 ## Overview
 
@@ -89,3 +89,13 @@ Game state and theme persist across reloads.
 - Sounds and animations are tied to move, merge, and pop events for feedback.
 
 ---
+
+## How the Game Plays (Brief)
+
+- **Start:** Board resets and two `'A'` tiles are created.
+- **Objective:** Form the current target word in a full row or column.
+- **Controls:**
+  - Press WASD or Arrow keys to move tiles.
+  - Double-clikc a tile to lock/unlock.
+  - Long-click (hold) to pop a tile (consumes one pop).
+- **Failure:** When the board is full, no merges are possible, and no pops remain, the game is lost.
